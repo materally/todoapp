@@ -45,6 +45,25 @@ function App() {
     return setSelectedTodos(newSelectedTodos);
   };
 
+  const handleDeleteIconClick = () => {
+    const newTodos = todos.filter((todo) => !selectedTodos.includes(todo));
+
+    return setTodos(newTodos);
+  };
+
+  const handleMoveTodo = (direction: Days) => {
+    const newTodos = todos.map((todo) => {
+      if (selectedTodos.includes(todo) && todo.day !== direction) {
+        return { ...todo, day: direction };
+      }
+
+      return todo;
+    });
+
+    setSelectedTodos([]);
+    return setTodos(newTodos);
+  };
+
   return (
     <Container>
       <Add
@@ -54,7 +73,13 @@ function App() {
         onRadioChange={handleRadioChange}
         onButtonClick={handleAddButtonClick}
       />
-      <List todos={todos} onSelectedTodosChange={handleOnTodoSelect} />
+      <List
+        todos={todos}
+        onSelectedTodosChange={handleOnTodoSelect}
+        onDeleteIconClick={handleDeleteIconClick}
+        onMoveTodoClick={handleMoveTodo}
+        selectedTodos={selectedTodos}
+      />
     </Container>
   );
 }

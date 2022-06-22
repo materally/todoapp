@@ -4,10 +4,16 @@ import { Todo } from "../../model";
 interface ListProps {
   title: string;
   todos: Todo[];
+  selectedTodos: Todo[];
   onSelectedTodosChange: (todo: Todo) => void;
 }
 
-const Todos = ({ title, todos, onSelectedTodosChange }: ListProps) => {
+const Todos = ({
+  title,
+  todos,
+  selectedTodos,
+  onSelectedTodosChange,
+}: ListProps) => {
   return (
     <Card>
       <Card.Body>
@@ -19,6 +25,7 @@ const Todos = ({ title, todos, onSelectedTodosChange }: ListProps) => {
             id={String(todo.id)}
             label={todo.text}
             onChange={() => onSelectedTodosChange(todo)}
+            checked={selectedTodos.includes(todo)}
           />
         ))}
       </Card.Body>
