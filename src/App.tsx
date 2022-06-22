@@ -1,23 +1,23 @@
 import { useState, SetStateAction } from "react";
 import { Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
+
 import { Days, Todo, TodoDay } from "./model";
 import Add from "./components/Add";
 import { List } from "./components/List";
 
 function App() {
   const [todos, setTodos] = useState<Todo[]>([]);
+  const [selectedTodos, setSelectedTodos] = useState<Todo[]>([]);
   const [inputTodoValue, setInputTodoValue] = useState<string>("");
   const [inputDayValue, setInputDayValue] = useState<TodoDay>(Days.TODAY);
-  const [selectedTodos, setSelectedTodos] = useState<Todo[]>([]);
 
-  const handleInputChange = (e: React.FormEvent<HTMLInputElement>) => {
-    setInputTodoValue(e.currentTarget.value);
+  const handleInputChange = (event: React.FormEvent<HTMLInputElement>) => {
+    setInputTodoValue(event.currentTarget.value);
   };
 
-  const handleRadioChange = (e: React.FormEvent<HTMLInputElement>) => {
-    setInputDayValue(e.currentTarget.value as SetStateAction<TodoDay>);
+  const handleRadioChange = (event: React.FormEvent<HTMLInputElement>) => {
+    setInputDayValue(event.currentTarget.value as SetStateAction<TodoDay>);
   };
 
   const handleAddButtonClick = () => {

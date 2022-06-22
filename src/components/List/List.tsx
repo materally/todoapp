@@ -1,4 +1,3 @@
-import { ReactElement } from "react";
 import { Row, Col } from "react-bootstrap";
 import {
   FaArrowAltCircleRight,
@@ -8,6 +7,7 @@ import {
 
 import { Days, Todo } from "../../model";
 import Todos from "./Todos";
+import Icon from "./Icon";
 
 interface ListProps {
   todos: Todo[];
@@ -16,26 +16,6 @@ interface ListProps {
   onMoveTodoClick: (direction: Days) => void;
   selectedTodos: Todo[];
 }
-
-const Icon = ({
-  icon,
-  label,
-  onClick,
-}: {
-  icon: ReactElement<any, any>;
-  label: string;
-  onClick: () => void;
-}) => {
-  return (
-    <div
-      className="mb-3 d-flex align-items-center flex-column"
-      onClick={onClick}
-    >
-      {icon}
-      {label}
-    </div>
-  );
-};
 
 const List = ({
   todos,

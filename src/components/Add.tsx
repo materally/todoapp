@@ -1,5 +1,5 @@
 import { ChangeEventHandler } from "react";
-import { Form, Button, Card } from "react-bootstrap";
+import { Form, Button, Card, Row } from "react-bootstrap";
 import { TodoDay, Days } from "../model";
 
 interface AddProps {
@@ -18,7 +18,7 @@ const Add = ({
   onButtonClick,
 }: AddProps) => {
   return (
-    <div className="row mt-4">
+    <Row className="mt-4">
       <Card>
         <Card.Body>
           <Card.Title>Add new task</Card.Title>
@@ -34,9 +34,9 @@ const Add = ({
             <Form.Check
               inline
               type="radio"
-              id="today"
+              id={Days.TODAY}
               label="Today"
-              value="today"
+              value={Days.TODAY}
               name="day"
               onChange={onRadioChange}
               checked={inputDayValue === Days.TODAY}
@@ -44,9 +44,9 @@ const Add = ({
             <Form.Check
               inline
               type="radio"
-              id="tomorrow"
+              id={Days.TOMORROW}
               label="Tomorrow"
-              value="tomorrow"
+              value={Days.TOMORROW}
               name="day"
               onChange={onRadioChange}
               checked={inputDayValue === Days.TOMORROW}
@@ -57,7 +57,7 @@ const Add = ({
           </Form.Group>
         </Card.Body>
       </Card>
-    </div>
+    </Row>
   );
 };
 
