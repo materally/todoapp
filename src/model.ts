@@ -4,3 +4,9 @@ export enum Days {
 }
 
 export type TodoDay = Days.TODAY | Days.TOMORROW;
+
+export interface Todo {
+  id: number;
+  day: TodoDay;
+  text: string;
+}
